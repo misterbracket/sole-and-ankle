@@ -27,7 +27,7 @@ const SuperHeader = () => {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   font-size: 0.875rem;
   color: ${COLORS.gray[300]};
   background-color: ${COLORS.gray[900]};
@@ -35,10 +35,10 @@ const Wrapper = styled.div`
 `;
 
 const RightSideWrapper = styled.div`
-  flex: 1;
+  flex: 0 0 350px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 const MarketingMessage = styled.span`
