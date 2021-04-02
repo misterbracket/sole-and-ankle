@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 
 import { COLORS, WEIGHTS } from "../../constants";
 import Logo from "../Logo";
-import Spacer from "../Spacer";
 import SuperHeader from "../SuperHeader";
 
 const Header = () => {
@@ -14,7 +13,9 @@ const Header = () => {
       <SuperHeader />
       <MainHeaderWrapper>
         <MainHeader>
-          <Logo />
+          <Side>
+            <Logo />
+          </Side>
           <Nav>
             <NavLink href="/sale">Sale</NavLink>
             <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -23,7 +24,7 @@ const Header = () => {
             <NavLink href="/kids">Kids</NavLink>
             <NavLink href="/collections">Collections</NavLink>
           </Nav>
-          <Spacer axis={"horizontal"} size={138} />
+          <Side />
         </MainHeader>
       </MainHeaderWrapper>
     </header>
@@ -45,8 +46,12 @@ const MainHeader = styled.div`
   justify-content: space-between;
 `;
 
+const Side = styled.div`
+  flex: 1;
+`;
+
 const Nav = styled.nav`
-  flex: 0 0 700px;
+  flex: 0 1 700px;
   display: flex;
   justify-content: space-evenly;
 `;

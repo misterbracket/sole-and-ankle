@@ -35,19 +35,24 @@ const ShoeCard = ({
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
-          {variant === "on-sale" ? (
-            <SaleLabel>Sale</SaleLabel>
-          ) : variant === "new-release" ? (
+          {variant === "on-sale" && <SaleLabel>Sale</SaleLabel>}
+          {variant === "new-release" && (
             <NewReleaseLabel>Just Released!</NewReleaseLabel>
-          ) : (
-            ""
           )}
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price variant={variant}>{formatPrice(price)}</Price>
+          <Price
+            style={{
+              "--color": variant === "on-sale" ? COLORS.gray["700"] : undefined,
+              "--text-decoration":
+                variant === "on-sale" ? "line-through" : undefined,
+            }}
+          >
+            {formatPrice(price)}
+          </Price>
         </Row>
         <Row>
           <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
@@ -81,7 +86,6 @@ const SaleLabel = styled(Label)`
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  flex: 1 1 300px;
 `;
 
 const Wrapper = styled.article``;
@@ -107,8 +111,8 @@ const Name = styled.h3`
 `;
 
 const Price = styled.span`
-  text-decoration: ${(p) =>
-    p.variant === "on-sale" ? "line-through" : "none"};
+  text-decoration: var(--text-decoration);
+  color: var(--color);
 `;
 
 const ColorInfo = styled.p`
