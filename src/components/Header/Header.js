@@ -1,9 +1,10 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
+import { COLORS, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import Spacer from "../Spacer";
+import SuperHeader from "../SuperHeader";
 
 const Header = () => {
   // Our site features two visual headers, but they should be
@@ -11,27 +12,44 @@ const Header = () => {
   return (
     <header>
       <SuperHeader />
-      <MainHeader>
-        <Logo />
-        <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
-        </Nav>
-      </MainHeader>
+      <MainHeaderWrapper>
+        <MainHeader>
+          <Logo />
+          <Nav>
+            <NavLink href="/sale">Sale</NavLink>
+            <NavLink href="/new">New&nbsp;Releases</NavLink>
+            <NavLink href="/men">Men</NavLink>
+            <NavLink href="/women">Women</NavLink>
+            <NavLink href="/kids">Kids</NavLink>
+            <NavLink href="/collections">Collections</NavLink>
+          </Nav>
+          <Spacer axis={"horizontal"} size={138} />
+        </MainHeader>
+      </MainHeaderWrapper>
     </header>
   );
 };
 
-const MainHeader = styled.div`
-  padding: 0 32px;
+const MainHeaderWrapper = styled.div`
+  display: flex;
+  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  align-items: center;
 `;
 
-const Nav = styled.nav``;
+const MainHeader = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  padding: 0 32px;
+  justify-content: space-between;
+`;
+
+const Nav = styled.nav`
+  flex: 0 0 700px;
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 const NavLink = styled.a`
   font-size: 1.125rem;
